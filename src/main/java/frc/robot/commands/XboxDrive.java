@@ -13,6 +13,7 @@ public class XboxDrive extends CommandBase {
   /** Creates a new XboxDrive. */
   public XboxDrive() {
     // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(RobotContainer.driveTrain);
   }
 
   // Called when the command is initially scheduled.

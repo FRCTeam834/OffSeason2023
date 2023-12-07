@@ -32,14 +32,14 @@ public class DriveTrain extends SubsystemBase {
     frontRightMotor = new CANSparkMax (MotorConstants.FRONT_RIGHT_MOTOR_ID, CANSparkMaxLowLevel.MotorType.kBrushed);
     backLeftMotor = new CANSparkMax (MotorConstants.BACK_LEFT_MOTOR_ID, CANSparkMaxLowLevel.MotorType.kBrushed);
     backRightMotor = new CANSparkMax (MotorConstants.BACK_RIGHT_MOTOR_ID, CANSparkMaxLowLevel.MotorType.kBrushed);
-  
+
     leftMotors = new MotorControllerGroup(frontLeftMotor, backLeftMotor);
     rightMotors = new MotorControllerGroup(frontRightMotor, backRightMotor);
   }
 
   public void drive (double leftSpeed, double rightSpeed) {
     leftMotors.set(leftSpeed);
-    rightMotors.set(rightSpeed);
+    rightMotors.set(-rightSpeed);
   }
 
   @Override
