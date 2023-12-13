@@ -21,8 +21,8 @@ public class DriveTrain extends SubsystemBase {
   CANSparkMax backLeftMotor;
   CANSparkMax backRightMotor;
 
-  MotorControllerGroup leftMotors;
-  MotorControllerGroup rightMotors;
+  MotorControllerGroup leftMotorGroup;
+  MotorControllerGroup rightMotorGroup;
 
   XboxController controller;
   
@@ -33,13 +33,20 @@ public class DriveTrain extends SubsystemBase {
     backLeftMotor = new CANSparkMax (MotorConstants.BACK_LEFT_MOTOR_ID, CANSparkMaxLowLevel.MotorType.kBrushed);
     backRightMotor = new CANSparkMax (MotorConstants.BACK_RIGHT_MOTOR_ID, CANSparkMaxLowLevel.MotorType.kBrushed);
 
-    leftMotors = new MotorControllerGroup(frontLeftMotor, backLeftMotor);
-    rightMotors = new MotorControllerGroup(frontRightMotor, backRightMotor);
+    leftMotorGroup = new MotorControllerGroup(frontLeftMotor, backLeftMotor);
+    leftMotorGroup.setInverted(MotorConstants.INVERT_LEFT_MOTOR_GROUP);
+    
+    rightMotorGroup = new MotorControllerGroup(frontRightMotor, backRightMotor);
   }
 
   public void drive (double leftSpeed, double rightSpeed) {
-    leftMotors.set(leftSpeed);
-    rightMotors.set(-rightSpeed);
+    leftMotorGroup.set(leftSpeed);
+    rightMotorGroup.set(rightSpeed);
+  }
+
+  public void stop(){
+    leftMotorGroup.stopMotor();
+    rightMotorGroup.stopMotor();
   }
 
   @Override

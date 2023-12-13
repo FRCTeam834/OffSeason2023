@@ -23,6 +23,8 @@ public final class Constants {
     public static final int FRONT_RIGHT_MOTOR_ID = 4;
     public static final int BACK_LEFT_MOTOR_ID = 3;
     public static final int BACK_RIGHT_MOTOR_ID = 5;
+
+    public static final boolean INVERT_LEFT_MOTOR_GROUP = true;
   }
 
 }
